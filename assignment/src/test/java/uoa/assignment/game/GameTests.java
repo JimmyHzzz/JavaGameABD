@@ -21,178 +21,178 @@ import java.util.regex.Pattern;
 /**
  * Unit test for simple App.
  */
-public class GameTests
-{
+public class GameTests 
+   { 
     public static final String ANSI_WHITE_BACKGROUND = "\u001B[47m";
     public static final String ANSI_BLACK = "\u001B[30m";
     public static final String ANSI_RESET = "\u001B[0m";
-
+    
     private final InputStream sysInBackup = System.in; // backup System.in to restore it later
+  
 
-
-
+    
     private final ByteArrayOutputStream outContent = new ByteArrayOutputStream ();
     private final PrintStream originalOut = System.out;
-
-    @Before
+    
+     @Before
     public void setUp() throws Exception {
-
+       
         System.setOut (new PrintStream (outContent));
-
-
-
+        
+        
+        
     }
-
+    
     @After
     public void tearDown() throws Exception {
         System.setOut (originalOut);
-
-
+        
+        
     }
-
-
-
-    /**
+    
+   
+    
+     /**
      * Task 2.1 b)
      */
-    @Test
+    /*@Test
     public void checkCharactersArray()
     {
-        try {
-            Map map = new Map (3,4);
-            assertEquals (4, map.characters.length);
-            assertEquals (3, map.layout.length);
-            assertEquals (4, map.layout[0].length);
-
-            map = new Map (4,2);
-            assertEquals (4, map.characters.length);
-            assertEquals (4, map.layout.length);
-            assertEquals (2, map.layout[0].length);
-
-        } catch (Exception | Error e) {
-            fail(ANSI_WHITE_BACKGROUND +ANSI_BLACK+ "Did you create a constructor for the Map class? Is the characters array public and of size 4? Did you create teh 2D array layot as specified? Check Task 2.1"+ ANSI_RESET+ e);
-        }
-
+       try {
+        Map map = new Map (3,4);
+        assertEquals (4, map.characters.length);
+        assertEquals (3, map.layout.length);
+        assertEquals (4, map.layout[0].length);
+            
+        map = new Map (4,2);
+        assertEquals (4, map.characters.length);
+        assertEquals (4, map.layout.length);
+        assertEquals (2, map.layout[0].length);   
+            
+    } catch (Exception | Error e) {
+        fail(ANSI_WHITE_BACKGROUND +ANSI_BLACK+ "Did you create a constructor for the Map class? Is the characters array public and of size 4? Did you create teh 2D array layot as specified? Check Task 2.1"+ ANSI_RESET+ e);
     }
-
-
-    /**
-     * Task 2.2
+      
+    }*/
+    
+   
+ /**
+     * Task 2.2 
      */
-    @Test
+    /*@Test
     public void checkLayoutInitialization()
     {
-        try {
-            Map map = new Map (2,3);
-            map.printLayout();
-            String output = outContent.toString().trim();
-
-            int count = 0;
-            for (int i = 0 ; i< output.length();i++ ) {
-                if (output.charAt(i) == '.') {
-                    count++;
-                }
+       try {
+        Map map = new Map (2,3);
+        map.printLayout(); 
+        String output = outContent.toString().trim(); 
+        
+        int count = 0;
+        for (int i = 0 ; i< output.length();i++ ) {
+            if (output.charAt(i) == '.') {
+               count++; 
             }
-            //there should be at least (2*3 - 4 players = 2 ".")
-            assertTrue (count>=2);
-
-            outContent.reset();
-
-            map = new Map (10,15);
-            map.printLayout();
-
-            output = outContent.toString().trim();
-
-            count = 0;
-            for (int i = 0 ; i< output.length();i++ ) {
-                if (output.charAt(i) == '.') {
-                    count++;
-                }
-            }
-            //there should be at least (10*15 - 4 players = 146 ".")
-            assertTrue (count>=146);
-
-        } catch (Exception | Error e) {
-            fail(ANSI_WHITE_BACKGROUND +ANSI_BLACK+ "Something is not right with the layout variable. Are you populating teh empty fields with '.'? Check Task 2.2" + ANSI_RESET+ e);
         }
+        //there should be at least (2*3 - 4 players = 2 ".")   
+        assertTrue (count>=2);
+        
+        outContent.reset();   
+        
+        map = new Map (10,15);
+        map.printLayout();    
+           
+        output = outContent.toString().trim(); 
+        
+        count = 0;
+        for (int i = 0 ; i< output.length();i++ ) {
+            if (output.charAt(i) == '.') {
+               count++; 
+            }
+        }
+        //there should be at least (10*15 - 4 players = 146 ".")   
+        assertTrue (count>=146);
+            
+    } catch (Exception | Error e) {
+        fail(ANSI_WHITE_BACKGROUND +ANSI_BLACK+ "Something is not right with the layout variable. Are you populating teh empty fields with '.'? Check Task 2.2" + ANSI_RESET+ e);
     }
-
-
+    }*/
+    
+    
     /**
-     * Task 2.3
+     * Task 2.3 
      */
-
-    @Test
+   
+    /*@Test
     public void checkPlayerAndMonsterPosition()
     {
-        try {
-            Map map = new Map (2,3);
-            //check player
-            assertEquals( 2, map.characters[0].column);
-            assertEquals( 1, map.characters[0].row);
-            //check top left
-            assertEquals( 0, map.characters[3].column);
-            assertEquals( 0, map.characters[3].row);
-            //check top right
-            assertEquals( 2, map.characters[1].column);
-            assertEquals( 0, map.characters[1].row);
-            //check bottom left
-            assertEquals( 0, map.characters[2].column);
-            assertEquals( 1, map.characters[2].row);
-
-
-        } catch (Exception | Error e) {
-            fail(ANSI_WHITE_BACKGROUND +ANSI_BLACK+ "Something is not right with initialising players and monsters.  Check Task 2.4" + ANSI_RESET + e);
-        }
+       try {
+        Map map = new Map (2,3);
+        //check player
+        assertEquals( 2, map.characters[0].column);
+        assertEquals( 1, map.characters[0].row);
+        //check top left
+        assertEquals( 0, map.characters[3].column);
+        assertEquals( 0, map.characters[3].row);
+        //check top right
+        assertEquals( 2, map.characters[1].column);
+        assertEquals( 0, map.characters[1].row);
+        //check bottom left
+        assertEquals( 0, map.characters[2].column);
+        assertEquals( 1, map.characters[2].row);
+           
+            
+    } catch (Exception | Error e) {
+        fail(ANSI_WHITE_BACKGROUND +ANSI_BLACK+ "Something is not right with initialising players and monsters.  Check Task 2.4" + ANSI_RESET + e);
     }
-
+    }*/
+   
     /**
-     * Task 2.4
+     * Task 2.4 
      */
-
-    @Test
+   
+    /*@Test
     public void checkPlayerAndMonsterPositionInLayout()
     {
-        try {
-
-            Map map = new Map (10,15);
-            map.printLayout();
-
-            String output = outContent.toString().trim();
-
-            int count = 0;
-            int countMonster = 0;
-            int countPlayer = 0;
-            for (int i = 0 ; i< output.length();i++ ) {
-                if (output.charAt(i) == '.') {
-                    count++;
-                }
-                if (output.charAt(i) == '%') {
-                    countMonster++;
-                }
-                if (output.charAt(i) == '*') {
-                    countPlayer++;
-                }
+       try {
+        
+        Map map = new Map (10,15);
+        map.printLayout();    
+           
+        String output = outContent.toString().trim(); 
+        
+        int count = 0;
+        int countMonster = 0;
+        int countPlayer = 0;
+        for (int i = 0 ; i< output.length();i++ ) {
+            if (output.charAt(i) == '.') {
+               count++; 
             }
-
-            //there should be exactly (10*15 - 4 players = 146 ".")
-            assertEquals (146,count);
-            assertEquals (3,countMonster);
-            assertEquals (1,countPlayer);
-
-            assertTrue (map.layout[0][0] == "%");
-            assertTrue (map.layout[0][map.layout[0].length-1] == "%");
-            assertTrue (map.layout[map.layout.length-1][0] == "%");
-            assertTrue (map.layout[map.layout.length-1][map.layout[0].length-1] == "*");
-
-
-        } catch (Exception | Error e) {
-            fail(ANSI_WHITE_BACKGROUND +ANSI_BLACK+ "Something is not right.  Check Task 2.5" + ANSI_RESET + e);
+            if (output.charAt(i) == '%') {
+               countMonster++; 
+            }
+            if (output.charAt(i) == '*') {
+               countPlayer++; 
+            }
         }
+           
+        //there should be exactly (10*15 - 4 players = 146 ".")   
+        assertEquals (146,count);
+        assertEquals (3,countMonster);
+        assertEquals (1,countPlayer);
+        
+        assertTrue (map.layout[0][0] == "%");
+        assertTrue (map.layout[0][map.layout[0].length-1] == "%");
+        assertTrue (map.layout[map.layout.length-1][0] == "%");
+       assertTrue (map.layout[map.layout.length-1][map.layout[0].length-1] == "*");
+           
+            
+    } catch (Exception | Error e) {
+        fail(ANSI_WHITE_BACKGROUND +ANSI_BLACK+ "Something is not right.  Check Task 2.5" + ANSI_RESET + e);
     }
-
-
-    /**
+    }*/
+    
+    
+  /**
      * Task 3.1 
      */
    
@@ -238,8 +238,8 @@ public class GameTests
         fail(ANSI_WHITE_BACKGROUND +ANSI_BLACK+ "Something is not right.  Check Task 3.1" + ANSI_RESET + e);
     }
     }*/
-
-    /**
+    
+ /**
      * Task 3.2 
      */
    
@@ -290,10 +290,10 @@ public class GameTests
         fail(ANSI_WHITE_BACKGROUND +ANSI_BLACK+ "Something is not right.  Check Task 3.2" + ANSI_RESET + e);
     }
     }*/
-
-
-
-    /**
+    
+  
+    
+     /**
      * Task 3.3
      */
     /*@Test
@@ -323,7 +323,7 @@ public class GameTests
     }
       
     }*/
-
+    
     /**
      * Task 3.4 
      */
@@ -401,7 +401,7 @@ public class GameTests
         fail(ANSI_WHITE_BACKGROUND +ANSI_BLACK+ "Something is not right.  Check Task 3.4" + ANSI_RESET + e);
     }
     }*/
-
+    
     /**
      * Task 4.1 
      */
@@ -450,7 +450,7 @@ public class GameTests
         fail(ANSI_WHITE_BACKGROUND +ANSI_BLACK+ "Something is not right.  Check Task 4.1" + ANSI_RESET + e);
     }
     }*/
-
+    
     /**
      * Task 4.3 
      */
@@ -492,7 +492,7 @@ public class GameTests
         fail(ANSI_WHITE_BACKGROUND +ANSI_BLACK+ "Something is not right.  Check Task 4.3" + ANSI_RESET + e);
     }
     }*/
-
+    
     /**
      * Task 4.4 
      */
@@ -517,8 +517,8 @@ public class GameTests
         fail(ANSI_WHITE_BACKGROUND +ANSI_BLACK+ "Something is not right.    Check Task 4.4" + ANSI_RESET + e);
     }
     }*/
-
-
+    
+    
     /**
      * Task 5.1 
      */
@@ -547,7 +547,7 @@ public class GameTests
         fail(ANSI_WHITE_BACKGROUND +ANSI_BLACK+ "Something is not right. Are you printing the health information    Check Task 5.1" + ANSI_RESET + e);
     }
     }*/
-
+    
     /**
      * Task 5.2
      */
@@ -576,8 +576,8 @@ public class GameTests
         fail(ANSI_WHITE_BACKGROUND +ANSI_BLACK+ "Something is not right. It seems that it is not possible to kill a monster...   Check Task 5.2" + ANSI_RESET + e);
     }
     }*/
-
-    /**
+    
+     /**
      * Task 5.3
      */
     /*@Test
@@ -606,9 +606,9 @@ public class GameTests
         fail(ANSI_WHITE_BACKGROUND +ANSI_BLACK+ "Something is not right. It seems that monster can't kill the player...   Check Task 5.3" + ANSI_RESET + e);
     }
     }*/
-
-
-
+    
+   
+    
     /**
      * Task 5.4
      */
@@ -641,8 +641,8 @@ public class GameTests
         fail(ANSI_WHITE_BACKGROUND +ANSI_BLACK+ "Something is not right. It seems that it is not possible to kill a monster...   Check Task 5.2" + ANSI_RESET + e);
     }
     }*/
-
-    /**
+    
+     /**
      * Task 5.5
      */
     /*@Test
@@ -684,5 +684,5 @@ public class GameTests
         fail(ANSI_WHITE_BACKGROUND +ANSI_BLACK+ "Something is not right. It seems that it is not possible to win or lose the game.   Check Task 5.5" + ANSI_RESET + e);
     }
     }*/
-
+    
 }
